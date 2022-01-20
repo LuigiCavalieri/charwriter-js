@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>CharWriter Example</title>
+	<script src="charwriter.js"></script>
+</head>
+
+<body>
+<p id="text"></p>
+
+<script>
+// The animation starts once the document has been fully loaded.
+window.addEventListener( 'load', () => {
+	// CharWriter objects must be inizialised with the ID attribute
+	// of the target HTML tag — 'text' in our example.
+	const writer = new CharWriter( 'text' );
+	
+	// Function called when the target node receives a click event.
+	let startOvertyping = ( event ) => {
+		// The 'overtype' animation is allowed to be launched only once.
+		event.target.removeEventListener( 'click', startOvertyping );
+		
+		writer.overtype( 'Lorem ipsum dolor sit amet, 1 Jan 2022, consectetur adipisicing elit ...' );
+	};
+
+	// Function called when the 'type' animation is over.
+	let addClickEvent = () => writer.target.addEventListener( 'click', startOvertyping );
+
+	// The 'type' animation starts 1 second after the document has been fully loaded.
+	setTimeout( () => writer.type( 'Click to replace this text.', addClickEvent ), 1000 );
+} );
+</script>
+</body>
+</html>
