@@ -125,7 +125,7 @@ class CharWriter {
 	 * @param {integer} delay Optional number of milliseconds the execution of the callback should be delayed of.
 	 */
 	 delete( callback = null, delay = 0 ) {
-		this.target.textContent = this.target.textContent.substring( 0, this.target.textContent.length - 1 );
+		this.target.innerHTML = this.target.textContent.substring( 0, this.target.textContent.length - 1 );
 	
 		if ( this.target.textContent.length ) {
 			this.#timeoutHandle = setTimeout( () => this.delete( callback, delay ), this.#pace( 30, 70 ) );
