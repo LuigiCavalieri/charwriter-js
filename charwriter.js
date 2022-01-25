@@ -1,5 +1,5 @@
 /**
- * CharWriter 1.0
+ * CharWriter 1.1
  * 
  * A class to insert, delete and replace text into an HTML tag 
  * by animating the task in a typing-like fashion.
@@ -140,7 +140,7 @@ class CharWriter {
 	 *
 	 * @param {string} text
 	 */
-	overtype( text ) {
+	replaceWith( text ) {
 		this.delete( () => this.type( text ), 500 );
 	}
 
